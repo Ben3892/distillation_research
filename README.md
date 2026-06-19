@@ -1,4 +1,4 @@
-# Knowledge Distillation Objective Routing for LLM Pre-training
+# Let the Data Decide: Supervision Analysis, Capability Trade-offs, and Adaptive Objective Routing in Off-Policy Distilled Pre-Training
 
 This repository contains the experimental code and analysis utilities for studying **off-policy knowledge distillation as a pre-training objective for large language models**. The project asks a simple question: when should a student model learn from the observed next token, and when should it imitate a teacher distribution?
 
@@ -61,6 +61,19 @@ We compare two routing granularity levels:
 
 The experiments suggest that routing is useful, but the routing signal must be stable and capability-relevant. Coarser domain-level routing is more reliable than local token-level routing in this setting.
 
+### 5. Valuable insights about LLM pretraining data
+* **Data quality**: the quality of the training data mixture is more important than the objective. A mixture of high-quality data (e.g., MBPP) is more effective than a mixture of high-quality data with low-quality data (e.g., MBPP + MMLU).
+* **Data diversity**: the diversity of the training data mixture is more important than the quality. A mixture of diverse data (e.g., MBPP + MATH) is more effective than a mixture of similar data (e.g., MBPP + MBPP).
+* **Data balance**: the balance of the training data mixture is more important than the diversity. A mixture of balanced data (e.g., MBPP + MATH) is more effective than a mixture of unbalanced data (e.g., MBPP + MMLU).
+* **Model capacity**: the capacity of the model is more important than the data when using few-shot evaluation. A larger model is more effective than a smaller model, even with the same data mixture.
+
+### 6. Other perspective about LLM pretraining data and training target
+Different data and training targets have different training speed for learning. 
+The training target is a key factor that affects the training speed and training effect.
+In order to obtain the fastest training speed for LLM pretraining, we need to choose the most suitable training target for the data.
+In this paper, we choose distillation target for general, stem data and lm loss for math/code data to achieve the fastest training speed.
+However, for token level routing, the training speed is not obvious on training target.
+
 ## Repository Structure
 
 ```text
@@ -74,6 +87,5 @@ The experiments suggest that routing is useful, but the routing signal must be s
 │   ├── routing/              # Domain-level and token-level routing policies
 │   └── evaluation/           # Benchmark and Pass@K evaluation helpers
 ├── results/                  # Aggregated metrics, tables, and logs
-├── notebooks/                # Plotting and exploratory analysis
 └── README.md
 ```
