@@ -575,9 +575,7 @@ DeepSeek V3.1 Base（内部评测性能优于 V3 Base）。
 
 ## Top-`k` —— Coverage 与 Sharpness 的权衡
 
-```markdown
 ![Figure 1: Diagnostic statistics for top-k truncated teacher distributions at τ = 1.](figures/topk_diagnostic_metrics_1.png)
-```
 
 *图 1：在 `τ = 1` 时，Top-`k` 截断教师分布的诊断统计结果。*
 
@@ -622,9 +620,7 @@ DeepSeek V3.1 Base（内部评测性能优于 V3 Base）。
 
 ## Temperature —— 仅改变支持集内部的概率分配
 
-```markdown
 ![Figure 2: Diagnostic statistics for top-256 truncated teacher distributions under different distillation temperatures.](figures/temperature_diagnostic_metrics_1.png)
-```
 
 *图 2：固定 Top-256 时，不同蒸馏温度下教师分布的诊断统计。*
 
@@ -720,9 +716,7 @@ Domain：58.40
 
 ## 为什么领域路由有效——按领域划分的诊断指标分析
 
-```markdown
 ![Figure 3: Domain-stratified diagnostic metrics under top-256 distillation with τ = 1.](figures/domain_routing_diagnostic_metrics_1.png)
-```
 
 *图 3：Top-256、`τ = 1` 条件下，不同领域数据的诊断指标。*
 
